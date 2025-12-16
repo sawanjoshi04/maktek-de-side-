@@ -79,6 +79,7 @@ a {
 .text-gradient {
     background: linear-gradient(90deg, var(--primary-cyan), var(--secondary-magenta));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 5px rgba(0, 243, 255, 0.3));
 }
@@ -1122,6 +1123,200 @@ a {
 
 
 /* ===========================
+   MISSION PROFILES
+   =========================== */
+.mission-profiles {
+    background: radial-gradient(circle at 50% 10%, rgba(0, 30, 80, 0.4), transparent 60%);
+    overflow: hidden;
+}
+
+.mission-header-actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.secure-link {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--primary-cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.secure-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--primary-cyan);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+    height: 500px;
+}
+
+.mission-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.mission-card:hover {
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
+}
+
+.mission-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mission-card:hover .mission-bg {
+    transform: scale(1.1);
+}
+
+.mission-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.mission-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    z-index: 2;
+}
+
+.mission-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--text-white);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.mission-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(0, 100, 255, 0.3);
+    border: 1px solid #0055ff;
+    color: #00aaff;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.mission-content h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.mission-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+.mission-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mission-card.small {
+    flex: 1;
+}
+
+.mission-meta {
+    font-family: var(--font-heading);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* Stats Footer */
+.mission-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-value .unit {
+    font-size: 1.5rem;
+    color: var(--text-gray);
+    vertical-align: super;
+    margin-left: 5px;
+}
+
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+
+/* ===========================
    MOBILE
    =========================== */
 @media (max-width: 968px) {
@@ -1131,8 +1326,22 @@ a {
 
     .tech-grid,
     .app-grid,
-    .projects-grid {
+    .projects-grid,
+    .mission-grid {
         grid-template-columns: 1fr;
+    }
+
+    .mission-grid {
+        height: auto;
+    }
+
+    .mission-stats {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .stat-item {
+        min-width: 40%;
     }
 
     .contact-wrapper {
